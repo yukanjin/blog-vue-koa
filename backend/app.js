@@ -1,9 +1,14 @@
 const Koa = require('koa2');
+const Router = require('koa-router');
+const controllers = require('./controllers')
 
 const app = new Koa();
+const router = new Router();
 
-app.use(async (ctx, next) => {
-  ctx.response.body = 'hello'
+controllers.forEach(controller => {
+  router[controller.method](controller.path, controller.handler)
 })
+
+app.use(router.routes())
 
 app.listen(3000)
