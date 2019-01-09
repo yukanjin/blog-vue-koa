@@ -5,6 +5,7 @@ const controllers = require('./controllers')
 const app = new Koa();
 const router = new Router();
 
+// load all router
 controllers.forEach(controller => {
   router[controller.method](controller.path, controller.handler)
 })
