@@ -1,0 +1,21 @@
+.container {
+    width: 1150px;
+    margin: 70px auto;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 0 0 25px rgba(255,255,255,0.2);
+    box-sizing: border-box;
+    padding: 25px;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .left-part {
+        float: left;
+        width: 775px;
+    }
+    .right-part {
+        margin-left: 800px;
+        width: 300px;
+    }
+}
