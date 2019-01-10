@@ -1,6 +1,6 @@
 <template>
-  <div class="article">
-    <mavon-editor v-model="content" @save="save" />
+  <div class="article" style="overflow:hidden">
+    <mavon-editor style="height: 500px;" v-model="content" @save="save" />
   </div>
 </template>
 
