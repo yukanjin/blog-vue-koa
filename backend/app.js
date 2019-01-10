@@ -1,15 +1,11 @@
 const Koa = require('koa2');
-const Router = require('koa-router');
-const controllers = require('./controllers')
+const cors = require('koa2-cors');
+const initRouter = require('./router');
 
 const app = new Koa();
-const router = new Router();
 
-// load all router
-controllers.forEach(controller => {
-  router[controller.method](controller.path, controller.handler)
-})
-
-app.use(router.routes())
+app.use(cors());
+initRouter(app)
 
 app.listen(3000)
+console.log('start listening port 3000!')

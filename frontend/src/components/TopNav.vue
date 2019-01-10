@@ -19,13 +19,13 @@ export default {
           checked: true
         },
         {
-          name: '文字',
+          name: '我的文字',
           value: 'word',
           path: '/word',
           checked: false
         },
         {
-          name: '慢生活',
+          name: '我的相册',
           value: 'life',
           path: '/life',
           checked: false
@@ -34,6 +34,12 @@ export default {
           name: '关于我',
           value: 'about',
           path: '/about',
+          checked: false
+        },
+        {
+          name: '编辑',
+          value: 'editor',
+          path: '/editword',
           checked: false
         }
       ]

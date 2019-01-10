@@ -1,9 +1,15 @@
+const sayHello = require('../services/helloService');
+const getTypelist = require('../services/typelistService');
+
 module.exports = [
   {
     method: 'get',
-    path: '/hello',
+    path: '/hello/:name',
     handler: (ctx, next) => {
-      ctx.response.body = 'hello'
+      var responseData = sayHello(ctx.params.name)
+      ctx.response.body = {
+        data: responseData
+      }
     }
   },
   {
@@ -11,6 +17,13 @@ module.exports = [
     path: '/home',
     handler: (ctx, next) => {
       ctx.response.body = 'home'
+    }
+  },
+  {
+    method: 'post',
+    path: '/typeList',
+    handler: (ctx, next) => {
+      ctx.response.body = getTypelist()
     }
   },
 ]

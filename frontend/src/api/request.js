@@ -1,12 +1,12 @@
 import axios from 'axios'
 // import qs from 'qs'
 
-export default function request (url, data, params) {
+export default function request (method, url, data, params) {
   return axios({
-    method: 'GET',
+    method,
     url,
     data,
-    baseURL: '/api'
+    baseURL: 'http://localhost:3000/'
   })
     .then(handleState)
     .catch(response => {
@@ -15,8 +15,9 @@ export default function request (url, data, params) {
 }
 
 function handleState (response) {
-  if (response.data.code === null) {
-    return response.data
-  }
-  return Promise.reject(response)
+  return response.data
+  // if (response.data.code === null) {
+  //   return response.data
+  // }
+  // return Promise.reject(response)
 }

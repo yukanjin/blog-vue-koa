@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/pages/home'
-import word from '@/pages/word'
-import about from '@/pages/about'
-import life from '@/pages/life'
+
+const home = () => import('@/pages/home')
+const word = () => import('@/pages/word')
+const about = () => import('@/pages/about')
+const life = () => import('@/pages/life')
+const wordEditor = () => import('@/pages/editor/word')
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -28,6 +31,10 @@ export default new Router({
     {
       path: '/about',
       component: about
+    },
+    {
+      path: '/editword',
+      component: wordEditor
     }
   ]
 })

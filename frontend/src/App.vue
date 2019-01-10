@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <top-nav></top-nav>
-    <div class="container">
-      <div class="left-part">
-        <router-view/>
-      </div>
-      <div class="right-part">
-        <new-list title="最新发布" :list="typeList"></new-list>
-        <new-list title="文章分类" :list="typeList"></new-list>
-        <new-list title="友情链接" :list="typeList"></new-list>
+    <div class="hidden-scroll-bar">
+      <top-nav></top-nav>
+      <div class="container">
+        <div class="left-part">
+          <router-view/>
+        </div>
+        <div class="right-part">
+          <new-list title="最新发布" :list="typeList"></new-list>
+          <new-list title="文章分类" :list="typeList"></new-list>
+          <new-list title="友情链接" :list="typeList"></new-list>
+        </div>
       </div>
     </div>
-    <div @click="postdata">post</div>
   </div>
 </template>
 
@@ -37,7 +38,7 @@ export default {
     },
     async getTypeList () {
       const res = await getTypeList({name: 'type'})
-      this.typeList = res.data.dataList
+      this.typeList = res.data
       console.log(this.typeList)
     }
   },
@@ -54,16 +55,24 @@ export default {
   padding: 0;
 }
 html,body {
-  min-height: 100%;
+  height: 100%;
 }
 body {
-  background: #d8e2eb url('./assets/bg.jpg') no-repeat top center;
+  background: #d8e2eb url('./assets/images/bg.jpg') no-repeat top center;
 }
 #app {
+  box-sizing: border-box;
+  height: 100%;
   padding-top: 60px;
+  overflow: hidden;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+.hidden-scroll-bar{
+  width: calc(100% + 15px);
+  overflow-y: scroll;
+  height: 100%;
 }
 </style>
