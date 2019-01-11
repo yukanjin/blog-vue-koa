@@ -1,0 +1,63 @@
+<template>
+  <div class="list">
+    <div class="list-item" v-for="item in list" :key="item.id">
+      <div class="list-item-title">{{item.title}}</div>
+      <div class="list-item-msg">{{item.type}} | {{item.time}}</div>
+      <div class="list-item-detail">{{item.description}}</div>
+      <div class="list-item-btn">阅读全文</div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    list: {
+      type: Array,
+      required: true
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+  .list {
+    &-item {
+      background: #fff;
+      padding: 20px;
+      position: relative;
+      &+& {
+        margin-top: 20px;
+      }
+      &-title {
+        border-bottom: 1px solid #adc2d7;
+        font-size: 20px;
+      }
+      &-msg {
+        margin-top: 10px;
+      }
+      &-detail {
+        margin-top: 5px;
+        line-height: 26px;
+        text-align: justify;
+      }
+      &-btn {
+        position: absolute;
+        right: 20px;
+        bottom: 15px;
+        opacity: 0;
+        background: #adc2d7;
+        color: #fff;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        transition: opacity 1s ease;
+      }
+      &:hover &-btn {
+        opacity: 1;
+      }
+    }
+  }
+</style>

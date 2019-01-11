@@ -63,6 +63,7 @@ export default {
     width: 1200px;
     color: #ffffff;
     &-title {
+      margin-top: 60px;
       text-shadow: rgb(17, 63, 110) 1px 3px 6px;
       font-size: 42px;
       font-weight: 800;

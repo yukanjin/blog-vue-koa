@@ -4,7 +4,9 @@
       <top-nav></top-nav>
       <div class="container">
         <div class="left-part">
-          <router-view/>
+          <transition name="route-change">
+            <router-view/>
+          </transition>
         </div>
         <div class="right-part">
           <new-list title="最新发布" :list="typeList"></new-list>
@@ -63,7 +65,6 @@ body {
 #app {
   box-sizing: border-box;
   height: 100%;
-  padding-top: 60px;
   overflow: hidden;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -74,5 +75,11 @@ body {
   width: calc(100% + 15px);
   overflow-y: scroll;
   height: 100%;
+}
+.route-change-enter-active {
+  transition: transform .8s linear, opacity .8s linear;
+}
+.route-change-enter {
+  opacity: 0;
 }
 </style>

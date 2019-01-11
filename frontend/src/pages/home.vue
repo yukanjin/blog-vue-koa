@@ -1,15 +1,15 @@
 <template>
-  <div class="home-list">
-    <div class="home-list-item" v-for="item in list" :key="item.id">
-      <div class="home-list-item-title">{{item.title}}</div>
-      <div>{{item.type}} | {{item.time}}</div>
-      <div>{{item.description}}</div>
-    </div>
+  <div>
+    <word-list :list="list"/>
   </div>
 </template>
 
 <script>
+import WordList from '@/components/wordList'
 export default {
+  components: {
+    WordList
+  },
   data () {
     return {
       list: [
@@ -18,7 +18,7 @@ export default {
           title: '文章标题',
           type: '文章类别',
           time: '2018-4-14',
-          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
+          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
         },
         {
           id: 1,
@@ -76,19 +76,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .home-list {
-    &-item {
-      background: #fff;
-      padding: 20px;
-      &+& {
-        margin-top: 20px;
-      }
-      &-title {
-        border-bottom: 1px solid #adc2d7;
-        font-size: 20px;
-      }
-    }
-  }
-</style>
