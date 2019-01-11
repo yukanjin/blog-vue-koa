@@ -2,7 +2,7 @@
   <div class="list">
     <div class="list-item" v-for="item in list" :key="item.id">
       <div class="list-item-title">{{item.title}}</div>
-      <div class="list-item-msg">{{item.type}} | {{item.time}}</div>
+      <div class="list-item-msg"><span class="btn-small" style="margin-right: 20px">{{item.type}}</span><span>{{item.time}}</span></div>
       <div class="list-item-detail">{{item.description}}</div>
       <div class="list-item-btn">阅读全文</div>
     </div>
@@ -35,6 +35,8 @@ export default {
       }
       &-msg {
         margin-top: 10px;
+        color: #999;
+        text-align:justify;
       }
       &-detail {
         margin-top: 5px;

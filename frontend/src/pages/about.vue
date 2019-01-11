@@ -51,11 +51,13 @@ export default {
         span {
           color: #999;
           &:hover {
-            color: #333;
+            color: #fff;
+            background: #adc2d7;
           }
         }
       }
       .slogan {
+        color: #0c61b6;
         font-weight: 500;
       }
     }
