@@ -41,6 +41,12 @@ export default {
           value: 'editor',
           path: '/editword',
           checked: false
+        },
+        {
+          name: '编辑相册',
+          value: 'photoeditor',
+          path: '/editphoto',
+          checked: false
         }
       ]
     }

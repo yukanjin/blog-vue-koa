@@ -6,6 +6,7 @@ const word = () => import('@/pages/word')
 const about = () => import('@/pages/about')
 const life = () => import('@/pages/life')
 const wordEditor = () => import('@/pages/editor/word')
+const photoEditor = () => import('@/pages/editor/photo')
 const article = () => import('@/pages/article')
 
 Vue.use(Router)
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/editword',
       component: wordEditor
+    },
+    {
+      path: '/editphoto',
+      component: photoEditor
     },
     {
       path: '/article',
