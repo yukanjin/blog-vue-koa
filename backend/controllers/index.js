@@ -1,5 +1,5 @@
-const hello = require('./hello')
+const common = require('./common')
 
 module.exports = [
-  ...hello
+  ...common
 ]

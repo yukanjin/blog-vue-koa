@@ -1,7 +1,7 @@
 import request from './request.js'
 
 export function getTypeList (data) {
-  return request('post', '/typeList', data)
+  return request('get', '/api/list', data)
 }
 export function postData (data) {
   return request('get', '/hello/name')
