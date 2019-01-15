@@ -45,12 +45,18 @@ export default {
       ]
     }
   },
+  watch: {
+    '$route.path': function (path) {
+      this.list.forEach(item => {
+        item.checked = false
+        if (path.indexOf(item.path) !== -1) {
+          item.checked = true
+        }
+      })
+    }
+  },
   methods: {
     changeTab (item) {
-      this.list.forEach(el => {
-        el.checked = false
-      })
-      item.checked = true
       this.$router.push(item.path)
     }
   }

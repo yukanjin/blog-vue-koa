@@ -1,22 +1,20 @@
 <template>
-  <div class="article" style="background: #fff;overflow:hidden">
-    <mavon-editor
-      :toolbarsFlag="false"
-      :subfield="false"
-      defaultOpen="preview"
-      v-model="article" />
+  <div class="word">
+    <tags />
+    <word-list class="mt20" />
   </div>
 </template>
 
 <script>
-import { mavonEditor } from 'mavon-editor'
+import Tags from '@/components/tags'
+import WordList from '@/components/wordList'
 export default {
   components: {
-    mavonEditor
+    Tags,
+    WordList
   },
-  computed: {
-    article () {
-      return this.$store.state.article
+  data () {
+    return {
     }
   }
 }

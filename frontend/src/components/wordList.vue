@@ -4,17 +4,87 @@
       <div class="list-item-title">{{item.title}}</div>
       <div class="list-item-msg"><span class="btn-small" style="margin-right: 20px">{{item.type}}</span><span>{{item.time}}</span></div>
       <div class="list-item-detail">{{item.description}}</div>
-      <div class="list-item-btn">阅读全文</div>
+      <div class="list-item-btn" @click="read(item)">阅读全文</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    list: {
-      type: Array,
-      required: true
+  name: 'wordList',
+  data () {
+    return {
+      list: [
+        {
+          id: 1,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
+        },
+        {
+          id: 2,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
+        },
+        {
+          id: 3,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
+        },
+        {
+          id: 4,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
+        },
+        {
+          id: 5,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述'
+        },
+        {
+          id: 6,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述'
+        },
+        {
+          id: 7,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述'
+        },
+        {
+          id: 8,
+          title: '文章标题',
+          type: '文章类别',
+          time: '2018-4-14',
+          description: '文章简述'
+        }
+      ]
+    }
+  },
+  computed: {
+    checkedTag () {
+      return this.$store.getters.checkedTag
+    }
+  },
+  methods: {
+    read (item) {
+      this.$router.push({
+        path: '/article',
+        query: {id: item.id}
+      })
     }
   }
 }
