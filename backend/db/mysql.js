@@ -2,21 +2,21 @@ const mysql = require('mysql')
 const pool = mysql.createPool({
   host     :  '127.0.0.1',
   user     :  'root',
-  password :  '123456',
-  database :  'database'
+  password :  '422705223',
+  database :  'blogdatabase'
 })
 
-const query = function(sql, values) {
+const query = function(sql, params) {
   return new Promise((resolve, reject) => {
     pool.getConnection(function(err, connection) {
       if (err) {
-        reject( err )
+        reject(err)
       } else {
-        connection.query(sql, values, (err, rows) => {
-          if ( err ) {
-            reject( err )
+        connection.query(sql, params, (err, rows) => {
+          if (err) {
+            reject(err)
           } else {
-            resolve( rows )
+            resolve(rows)
           }
           connection.release()
         })
@@ -25,9 +25,4 @@ const query = function(sql, values) {
   })
 }
 
-async function getData( ) {
-  let sql = 'SELECT * FROM table'
-  let data = await query( sql )
-  console.log(data)
-}
-getData()
+module.exports = query; 

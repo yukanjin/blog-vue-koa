@@ -1,5 +1,5 @@
-const common = require('./common')
+const type = require('./type')
 
 module.exports = [
-  ...common
+  ...type
 ]

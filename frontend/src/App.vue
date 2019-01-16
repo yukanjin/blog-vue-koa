@@ -39,7 +39,7 @@ export default {
       console.log(res)
     },
     async getTypeList () {
-      const res = await getTypeList({name: 'type'})
+      const res = await getTypeList()
       this.typeList = res.data
       console.log(this.typeList)
     }
