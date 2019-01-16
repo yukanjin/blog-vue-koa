@@ -61,6 +61,7 @@ export default {
     handleRemove (file, fileList) {
       console.log(file, fileList)
     },
+    bindChange () {},
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true

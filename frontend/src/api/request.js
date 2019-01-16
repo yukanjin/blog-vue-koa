@@ -1,23 +1,25 @@
 import axios from 'axios'
-// import qs from 'qs'
 
 export default function request (method, url, data) {
   return axios({
     method,
     url,
-    params: data,
+    data,
     baseURL: 'http://localhost:3000/'
   })
     .then(handleState)
     .catch(response => {
-      return response.data
+      showError(response.data.msg)
     })
 }
 
 function handleState (response) {
-  return response.data
-  // if (response.data.code === null) {
-  //   return response.data
-  // }
-  // return Promise.reject(response)
+  if (response.data.code === '0') {
+    return response.data
+  }
+  return Promise.reject(response)
+}
+
+function showError (msg) {
+  window.alert(msg)
 }

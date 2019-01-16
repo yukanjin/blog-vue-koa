@@ -40,8 +40,10 @@ export default {
     },
     async getTypeList () {
       const res = await getTypeList()
-      this.typeList = res.data
-      console.log(this.typeList)
+      if (res) {
+        this.typeList = res.data
+        console.log(this.typeList)
+      }
     }
   },
   mounted () {
