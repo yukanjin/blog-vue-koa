@@ -6,7 +6,7 @@ module.exports = [
     path: '/api/getTypes',
     handler: async (ctx, next) => {
       var responseData = await getTypes()
-      ctx.response.body = responseData
+      ctx.response.body = new Result(0, '查询成功', responseData)
     }
   },
   {
@@ -14,8 +14,8 @@ module.exports = [
     path: '/api/addType',
     handler: async (ctx, next) => {
       var query = ctx.request.query
-      var responseData = await addType(query)
-      ctx.response.body = responseData
+      await addType(query)
+      ctx.response.body = new Result(0, '添加成功')
     }
   }
 ]
