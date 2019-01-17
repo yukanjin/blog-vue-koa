@@ -83,7 +83,7 @@ export default {
     read (item) {
       this.$router.push({
         path: '/article',
-        query: {id: item.id}
+        query: { id: item.id }
       })
     }
   }

@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async postdata () {
-      const res = await postData({name: 'post data'})
+      const res = await postData({ name: 'post data' })
       console.log(res)
     },
     async getTypeList () {
