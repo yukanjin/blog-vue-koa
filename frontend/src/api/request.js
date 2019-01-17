@@ -4,8 +4,7 @@ export default function request (method, url, data) {
   return axios({
     method,
     url,
-    data,
-    baseURL: 'http://localhost:3000/'
+    data
   })
     .then(handleState)
     .catch(response => {

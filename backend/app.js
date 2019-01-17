@@ -4,7 +4,6 @@ const initRouter = require('./router');
 
 const app = new Koa();
 
-app.use(cors());
 initRouter(app)
 
 app.listen(3000)
