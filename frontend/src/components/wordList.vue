@@ -2,7 +2,7 @@
   <div class="list">
     <div class="list-item" v-for="item in list" :key="item.id">
       <div class="list-item-title">{{item.title}}</div>
-      <div class="list-item-msg"><span class="btn-small" style="margin-right: 20px">{{item.type}}</span><span>{{item.time}}</span></div>
+      <div class="list-item-msg"><span class="btn-small" @click="routeWithType(item.type)" style="margin-right: 20px">{{item.type}}</span><span>{{item.time}}</span></div>
       <div class="list-item-detail">{{item.description}}</div>
       <div class="list-item-btn" @click="read(item)">阅读全文</div>
     </div>
@@ -18,28 +18,28 @@ export default {
         {
           id: 1,
           title: '文章标题',
-          type: '文章类别',
+          type: '日记随笔',
           time: '2018-4-14',
           description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
         },
         {
           id: 2,
           title: '文章标题',
-          type: '文章类别',
+          type: '生活点滴',
           time: '2018-4-14',
           description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
         },
         {
           id: 3,
           title: '文章标题',
-          type: '文章类别',
+          type: '只言片语',
           time: '2018-4-14',
           description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
         },
         {
           id: 4,
           title: '文章标题',
-          type: '文章类别',
+          type: '技术分享',
           time: '2018-4-14',
           description: '文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述文章简述'
         },
@@ -76,7 +76,12 @@ export default {
   },
   computed: {
     checkedTag () {
-      return this.$store.getters.checkedTag
+      return this.$store.state.checkedTag 
+    }
+  },
+  watch: {
+    checkedTag (val) {
+      // TODO: loadWordList
     }
   },
   methods: {
@@ -85,6 +90,10 @@ export default {
         path: '/article',
         query: { id: item.id }
       })
+    },
+    routeWithType (type) {
+      this.$store.commit('setCheckedTag', type)
+      this.$router.push({ path: '/word' })
     }
   }
 }

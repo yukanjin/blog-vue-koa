@@ -1,4 +1,5 @@
 const { getTypes, addType } = require('../services/typeService');
+const Result = require('../classes/Result');
 
 module.exports = [
   {

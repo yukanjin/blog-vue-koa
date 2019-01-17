@@ -9,9 +9,9 @@
           </transition>
         </div>
         <div class="right-part">
-          <new-list title="最新发布" :list="typeList"></new-list>
-          <new-list title="文章分类" :list="typeList"></new-list>
-          <new-list title="友情链接" :list="typeList"></new-list>
+          <new-list title="最新发布" :list="types"></new-list>
+          <new-list title="文章分类" :list="types"></new-list>
+          <new-list title="友情链接" :list="types"></new-list>
         </div>
       </div>
     </div>
@@ -33,16 +33,16 @@ export default {
       typeList: []
     }
   },
+  computed: {
+    types () {
+      return this.$store.state.types
+    }
+  },
   methods: {
-    async postdata () {
-      const res = await postData({ name: 'post data' })
-      console.log(res)
-    },
     async getTypeList () {
       const res = await getTypeList()
       if (res) {
-        this.typeList = res.data
-        console.log(this.typeList)
+        this.$store.commit('setTypes', res.data)
       }
     }
   },

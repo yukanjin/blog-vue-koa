@@ -14,7 +14,7 @@ export default function request (method, url, data) {
 }
 
 function handleState (response) {
-  if (response.data.code === '0') {
+  if (response.data.code === 0) {
     return response.data
   }
   return Promise.reject(response)

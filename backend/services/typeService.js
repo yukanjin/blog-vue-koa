@@ -2,7 +2,11 @@ const query = require('../db/mysql')
 const Result = require('../classes/Result')
 
 const getTypes = async () => {
-  let sql = "select * from WORD_TYPE"
+  let sql = `select 
+    ID as id,
+    NAME as name,
+    VALUE as value
+   from WORD_TYPE`
   let data = await query(sql)
   return data
 }
