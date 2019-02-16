@@ -1,5 +1,4 @@
 const query = require('../db/mysql')
-const Result = require('../classes/Result')
 
 const getTypes = async () => {
   let sql = `select 
