@@ -7,7 +7,7 @@ const store = new Vuex.Store({
   state: {
     article: '',
     types: [],
-    checkedType: '全部文章'
+    checkedType: '0'
   },
   mutations: {
     setArticle (state, payload) {

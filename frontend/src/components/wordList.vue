@@ -2,7 +2,7 @@
   <div class="list">
     <div class="list-item" v-for="item in list" :key="item.id">
       <div class="list-item-title">{{item.title}}</div>
-      <div class="list-item-msg"><span class="btn-small" @click="routeWithType(item.type)" style="margin-right: 20px">{{item.type}}</span><span>{{item.time}}</span></div>
+      <div class="list-item-msg"><span class="btn-small" @click="routeWithType(item.typeId)" style="margin-right: 20px">{{item.typeName}}</span><span>{{item.time}}</span></div>
       <div class="list-item-detail">{{item.description}}</div>
       <div class="list-item-btn" @click="read(item)">阅读全文</div>
     </div>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { getWords } from '@/api/index'
+
 export default {
   name: 'wordList',
   data () {
@@ -75,14 +77,18 @@ export default {
     }
   },
   computed: {
-    checkedTag () {
-      return this.$store.state.checkedTag 
+    checkedType () {
+      return this.$store.state.checkedType
     }
   },
   watch: {
-    checkedTag (val) {
+    checkedType (val) {
       // TODO: loadWordList
+      this.loadWords(val)
     }
+  },
+  created () {
+    this.loadWords()
   },
   methods: {
     read (item) {
@@ -94,6 +100,12 @@ export default {
     routeWithType (type) {
       this.$store.commit('setCheckedTag', type)
       this.$router.push({ path: '/word' })
+    },
+    async loadWords (typeId = 0) {
+      const res = await getWords(typeId)
+      if (res) {
+        this.list = res.data
+      }
     }
   }
 }

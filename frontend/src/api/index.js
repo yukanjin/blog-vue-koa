@@ -6,3 +6,6 @@ export function getTypeList () {
 export function postData (data) {
   return request('get', '/hello/name')
 }
+export function getWords (typeId) {
+  return request('get', `/api/getWords?typeId=${typeId}`)
+}

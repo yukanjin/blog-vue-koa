@@ -12,7 +12,7 @@ export default {
   computed: {
     tags () {
       return [{id: 0, name: '全部文章', value: ''}, ...this.$store.state.types].map(tag => {
-        if (tag.name === this.$store.state.checkedType) {
+        if (+tag.id === +this.$store.state.checkedType) {
           this.$set(tag, 'checked', true)
         } else {
           tag.checked = false
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     switchTag (tag) {
-      this.$store.commit('setCheckedTag', tag.name)
+      this.$store.commit('setCheckedTag', tag.id)
     }
   }
 }
