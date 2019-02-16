@@ -2,12 +2,31 @@ const query = require('../db/mysql')
 
 const getWords = async () => {
   let sql = `select 
-    ID as id,
-    TITLE as title,
-    DESCRIPTION as description
-   from WORD
-   where DEL_FLAG=0`
+    a.ID as id,
+    a.TITLE as title,
+    a.DESCRIPTION as description,
+    b.id as typeId,
+    b.NAME as typeName
+    from WORD as a,
+    word_type as b
+    where a.DEL_FLAG='0' and a.type = b.ID
+    order by a.UPDATE_TIME DESC;`
   let data = await query(sql)
+  return data
+}
+const getWordsByType = async (typeId) => {
+  let sql = `select 
+    a.ID as id,
+    a.TITLE as title,
+    a.DESCRIPTION as description,
+    b.id as typeId,
+    b.NAME as typeName
+    from WORD as a,
+    word_type as b
+    where a.TYPE = ? and a.DEL_FLAG='0' and a.type = b.ID
+    order by a.UPDATE_TIME DESC;`
+  let params = [typeId]
+  let data = await query(sql, params)
   return data
 }
 
@@ -27,6 +46,7 @@ const addWord = async (word) => {
 
 module.exports = {
   getWords,
+  getWordsByType,
   addWord,
   updateWord
 };

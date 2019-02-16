@@ -1,4 +1,4 @@
-const { getWords, addWord, updateWord } = require('../services/typeService');
+const { getWords, getWordsByType, addWord, updateWord } = require('../services/wordService');
 const Result = require('../classes/Result');
 
 module.exports = [
@@ -7,10 +7,11 @@ module.exports = [
     path: '/api/getWords',
     handler: async (ctx, next) => {
       try {
-        var responseData = await getWords()
+        var query = ctx.query
+        var responseData = query.typeId !== '0' ? await getWordsByType(query.typeId) : await getWords()
         ctx.response.body = new Result(0, '查询成功', responseData)
       } catch (e) {
-        ctx.response.body = new Result(0, '查询失败')
+        ctx.response.body = new Result(1, '查询失败')
       }
     }
   },
@@ -23,7 +24,7 @@ module.exports = [
         await addWord(query)
         ctx.response.body = new Result(0, '添加成功')
       } catch (e) {
-        ctx.response.body = new Result(0, '添加失败')
+        ctx.response.body = new Result(1, '添加失败')
       }
     }
   },
@@ -36,7 +37,7 @@ module.exports = [
         await updateWord(query)
         ctx.response.body = new Result(0, '修改成功')
       } catch (e) {
-        ctx.response.body = new Result(0, '修改失败')
+        ctx.response.body = new Result(1, '修改失败')
       }
       
     }
